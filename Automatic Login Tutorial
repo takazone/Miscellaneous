@@ -1,0 +1,37 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+import pyautogui as pg
+import pyperclip as pp 
+
+#Notes: This code only works for websites that doenst have captcha or any of those bots detectors
+
+browser=webdriver.Chrome() #This line depends of which browser you're using. It opens the browser
+browser.maximize_window() #Maximize the window
+browser.get('https://academico.pecege.org.br/Account/Login?ReturnUrl=%2f') #any website you wish to acess
+
+#Allows time for webpage to load (Depends of how fast is your computer and also the internet)
+time.sleep(10)
+
+#Login  
+#Note: The coordinates tutorial is in the end of this session. 
+
+pg.click(x=1042, y=341)
+pp.copy("youremail.com")
+pg.hotkey("ctrl", "v")
+
+pg.click(x=911, y=415)
+pp.copy("password")
+pg.hotkey("ctrl", "v")
+
+pg.click(x=1197, y=542) #last click on the login button
+
+
+####### Finding the coordinates#####
+
+#Notes: The coordinates depends of the size of your screen and also if the browser is maximized or not. To find it, youll need to run the following code:
+
+time.sleep(5)
+ff = pyautogui.position() #put the mouse on the place you want to locate the coordinates, it is not needed to click. Wait for the sleep time to end.
+print(ff) #if you're using Vs Code, don't forget the print function, otherwise it will not show. For jupyter notebooks it is not needed.
